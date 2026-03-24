@@ -1,0 +1,17 @@
+{
+  "name": "rainbow-bloc-site",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.7.10",
+    "@astrojs/vue": "^5.0.6",
+    "vue": "^3.5.13"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "sharp"]
+  }
+}

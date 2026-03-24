@@ -1,0 +1,122 @@
+---
+const navLinks = [
+  { href: "/get-involved", label: "Get Involved" },
+  { href: "/causes", label: "Causes" },
+  { href: "/stay-informed", label: "Stay Informed" },
+  { href: "/about", label: "About Us" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+  <nav class="container nav-bar">
+    <a href="/" class="logo">Rainbow Bloc</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle sr-only" />
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+      <span></span>
+    </label>
+    <ul class="nav-links">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a href={href} class:list={[{ active: currentPath.startsWith(href) }]}>
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    background: var(--color-bg);
+    z-index: 100;
+  }
+
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--color-primary);
+  }
+
+  .logo:hover {
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-links a {
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .nav-links a.active {
+    color: var(--color-accent);
+  }
+
+  .nav-toggle-label {
+    display: none;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-toggle-label span,
+  .nav-toggle-label span::before,
+  .nav-toggle-label span::after {
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    background: var(--color-text);
+    position: relative;
+    transition: transform 0.2s;
+  }
+
+  .nav-toggle-label span::before,
+  .nav-toggle-label span::after {
+    content: "";
+    position: absolute;
+  }
+
+  .nav-toggle-label span::before { top: -6px; }
+  .nav-toggle-label span::after { top: 6px; }
+
+  @media (max-width: 768px) {
+    .nav-toggle-label {
+      display: flex;
+    }
+
+    .nav-links {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-top: 1rem;
+    }
+
+    .nav-toggle:checked ~ .nav-links {
+      display: flex;
+    }
+  }
+</style>

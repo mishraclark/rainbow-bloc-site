@@ -1,0 +1,66 @@
+---
+const socialLinks = [
+  { href: "#", label: "Instagram" },
+  { href: "#", label: "Twitter" },
+  { href: "#", label: "TikTok" },
+];
+---
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <p class="footer-name">Rainbow Bloc</p>
+      <p class="footer-tagline">Solidarity in action.</p>
+    </div>
+    <nav class="footer-links">
+      <a href="/about/contact">Contact</a>
+      <a href="/about/donate">Donate</a>
+      <a href="/press">Press Kit</a>
+    </nav>
+    <div class="footer-social">
+      {socialLinks.map(({ href, label }) => (
+        <a href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+      ))}
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--color-border);
+    padding-block: 2rem;
+    margin-top: 3rem;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .footer-name {
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .footer-tagline {
+    margin-top: 0.25rem;
+  }
+
+  .footer-links, .footer-social {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer-links a, .footer-social a {
+    color: var(--color-muted);
+  }
+
+  .footer-links a:hover, .footer-social a:hover {
+    color: var(--color-accent);
+  }
+</style>

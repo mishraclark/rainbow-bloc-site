@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NewsletterSignup from "../../components/NewsletterSignup.vue";
+---
+
+<BaseLayout title="Stay Informed | Rainbow Bloc">
+  <section>
+    <div class="container">
+      <h1>Stay Informed</h1>
+      <p>Stay connected with our work through zines, events, and our newsletter.</p>
+
+      <div class="grid grid-3" style="margin-top: 2rem;">
+        <a href="/stay-informed/zines" class="card link-card">
+          <h3>Zines</h3>
+          <p>Browse and download printable zines.</p>
+        </a>
+        <a href="/stay-informed/calendar" class="card link-card">
+          <h3>Calendar</h3>
+          <p>Upcoming events and actions.</p>
+        </a>
+        <a href="/safety" class="card link-card">
+          <h3>Safety</h3>
+          <p>Digital and physical safety resources.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Newsletter</h2>
+      <p>Get updates delivered to your inbox.</p>
+      <NewsletterSignup client:visible />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .link-card {
+    color: var(--color-text);
+  }
+
+  .link-card:hover {
+    text-decoration: none;
+  }
+</style>

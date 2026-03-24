@@ -1,0 +1,43 @@
+{
+  "$ref": "#/definitions/events",
+  "definitions": {
+    "events": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "start": {
+          "type": "string"
+        },
+        "end": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "start"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

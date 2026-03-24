@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Causes | Rainbow Bloc">
+  <section>
+    <div class="container">
+      <h1>Our Causes</h1>
+      <p>We stand in solidarity with communities facing systemic injustice.</p>
+
+      <div class="grid grid-3" style="margin-top: 2rem;">
+        <a href="/causes/ice" class="card cause-card">
+          <h3>ICE Resistance</h3>
+          <p>Know your rights, protect your neighbors, and resist unjust enforcement.</p>
+        </a>
+        <a href="/causes/palestine" class="card cause-card">
+          <h3>Palestine</h3>
+          <p>Solidarity with the Palestinian people and the movement for liberation.</p>
+        </a>
+        <a href="/causes/mutual-aid" class="card cause-card">
+          <h3>Mutual Aid</h3>
+          <p>Community care and resource sharing — because we keep us safe.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cause-card {
+    color: var(--color-text);
+    transition: border-color 0.15s;
+  }
+
+  .cause-card:hover {
+    text-decoration: none;
+  }
+
+  .cause-card h3 {
+    margin-bottom: 0.5rem;
+  }
+</style>

@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ContactForm from "../../components/ContactForm.vue";
+---
+
+<BaseLayout title="Contact | Rainbow Bloc">
+  <section>
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>Interested in volunteering or getting more involved? Drop us a line.</p>
+      <ContactForm client:visible />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import EventCalendar from "../../components/EventCalendar.vue";
+
+// TODO: Replace with actual content collection data
+const events = [
+  {
+    name: "Example Event",
+    slug: "example",
+    start: "2026-04-15T18:00:00",
+    end: "2026-04-15T20:00:00",
+    location: "Community Center",
+    description: "A placeholder event.",
+    link: "#",
+  },
+];
+---
+
+<BaseLayout title="Calendar | Rainbow Bloc">
+  <section>
+    <div class="container">
+      <h1>Calendar</h1>
+      <p>Upcoming events and actions. Show up, build community.</p>
+      <EventCalendar client:visible events={events} />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ZineCatalog from "../../components/ZineCatalog.vue";
+
+// TODO: Replace with actual content collection data
+const zines = [
+  { name: "Example Zine", slug: "example", category: "General", image: "", file: "#" },
+];
+---
+
+<BaseLayout title="Zines | Rainbow Bloc">
+  <section>
+    <div class="container">
+      <h1>Zines</h1>
+      <p>Browse our collection of printable zines. Click to download.</p>
+      <ZineCatalog client:visible zines={zines} />
+    </div>
+  </section>
+</BaseLayout>
