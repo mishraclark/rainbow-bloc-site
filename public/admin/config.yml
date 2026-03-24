@@ -1,0 +1,43 @@
+backend:
+  name: github
+  repo: mishraclark/rainbow-bloc-site
+
+media_folder: /public/uploads
+public_folder: /uploads
+
+app_title: Rainbow Bloc Admin
+
+collections:
+  - name: zines
+    label: Zines
+    folder: /src/content/zines
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: name, widget: string }
+      - label: Category
+        name: category
+        widget: string
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        field: { label: Tag, name: tag, widget: string }
+      - { label: Preview Image, name: image, widget: image, required: false }
+      - { label: File, name: file, widget: file }
+      - { label: Description, name: description, widget: markdown, required: false }
+
+  - name: events
+    label: Events
+    folder: /src/content/events
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Name, name: name, widget: string }
+      - { label: Start, name: start, widget: datetime, format: "YYYY-MM-DDTHH:mm:ss.SSSZ" }
+      - { label: End, name: end, widget: datetime, required: false, format: "YYYY-MM-DDTHH:mm:ss.SSSZ" }
+      - { label: Location, name: location, widget: string, required: false }
+      - { label: Address, name: address, widget: string, required: false }
+      - { label: Link, name: link, widget: string, required: false }
+      - { label: Image, name: image, widget: image, required: false }
+      - { label: Description, name: description, widget: markdown, required: false }
