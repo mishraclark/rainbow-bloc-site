@@ -7,12 +7,19 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <div class="container">
       <h1>Support Our Work</h1>
       <p>Your donations help us print zines, host events, and support our community.</p>
-      <!-- TODO: embed donation link/widget (Ko-fi, Open Collective, Stripe, etc.) -->
       <div class="card" style="margin-top: 2rem; max-width: 24rem; text-align: center;">
-        <h3>Donate</h3>
-        <p>Donation integration coming soon.</p>
-        <a href="#" class="btn btn-primary">Donate Now</a>
+        <h3>Donate via Venmo</h3>
+        <img src="/qr-codes/rb-venmo-qr-code.svg" alt="Venmo QR code" class="qr-code" />
+        <p>Scan the QR code or find us on Venmo.</p>
       </div>
     </div>
   </section>
+
+<style>
+  .qr-code {
+    width: 12rem;
+    height: auto;
+    margin-block: 1rem;
+  }
+</style>
 </BaseLayout>

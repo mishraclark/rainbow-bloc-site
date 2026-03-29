@@ -5,7 +5,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout title="Rainbow Bloc">
   <section class="hero">
     <div class="container">
-      <h1>Rainbow Bloc</h1>
+      <img src="/rb-logo.svg" alt="Rainbow Bloc" class="hero-logo" />
       <p class="hero-tagline">Solidarity in action.</p>
       <div class="hero-actions">
         <a href="/get-involved" class="btn btn-primary">Get Involved</a>
@@ -60,14 +60,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     text-align: center;
   }
 
-  .hero h1 {
-    font-size: 3.5rem;
+  .hero-logo {
+    width: min(80%, 28rem);
+    height: auto;
+    margin-top: -7.5rem;
+
   }
 
   .hero-tagline {
     font-size: 1.25rem;
     color: var(--color-muted);
-    margin-top: 0.5rem;
+    margin-top: -10rem;
   }
 
   .hero-actions {
