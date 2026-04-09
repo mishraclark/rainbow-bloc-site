@@ -1,5 +1,56 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Faq from "../components/Faq.astro";
+
+const whistles = (await getCollection("whistles")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const recommendedWhistles = whistles.filter((w) => w.data.recommended);
+
+const recommendedList = recommendedWhistles.length
+  ? `<ul>${recommendedWhistles
+      .map(
+        (w) =>
+          `<li><a href="${w.data.file}" download>${w.data.name}</a></li>`,
+      )
+      .join("")}</ul>`
+  : `<p><em>No recommended files uploaded yet. Upload STL files via the admin panel.</em></p>`;
+
+const whistleFaq = [
+  {
+    question: "Which whistle file should I print?",
+    answer: `<p>We suggest printing one of the files below, as they have the best combination of speed, filament usage, and loudness.</p>${recommendedList}<p>All types of whistles are accepted, though.</p>`,
+  },
+  {
+    question: "Do I need to print the PIRC Hotline # on the whistles?",
+    answer: `<p><strong>Nope!</strong></p><p>The hotline is on every flyer that comes with a whistle, and overwhelming feedback is that folks save the hotline # to their phones, rather than reading it off the whistle in the moment.</p><p>We included the whistles that have the PIRC # printed directly on them, as that is a common question, but you do NOT need to print the #. If the STL without the # prints faster or with less filament, please use that one.</p>`,
+  },
+  {
+    question: "What color should I use?",
+    answer: `<p>Any color or combination of colors!</p>`,
+  },
+  {
+    question: "What filament should I use?",
+    answer: `<p>Any filament! The files have been tested with many brands.</p>`,
+  },
+  {
+    question: "How many whistles should I print?",
+    answer: `<p>As many as you reasonably can!</p><p>The weekly builds are large, and we estimate building 5–8k kits each week, depending on whistles supplied.</p>`,
+  },
+  {
+    question: "How can I get the whistles to you?",
+    answer: `<ul><li><strong>Dropoff at one of our events:</strong> 6–8pm at Lucky Lab on Hawthorne, every Wednesday in February</li><li><strong>Dropoff at a location in inner SE:</strong> 24/7, address shared in Signal only</li><li><strong>Pickup is available</strong> depending on neighborhood — please message in Signal or email <a href="mailto:rainbowbloc@proton.me">rainbowbloc@proton.me</a></li></ul>`,
+  },
+  {
+    question: "Can I be reimbursed for the cost of filament?",
+    answer: `<p><strong>Yes!</strong></p><p>We appreciate if you are able to donate the cost of filament, but we're happy to reimburse if that isn't possible. For new printers, the reimbursement cap is $20/week. That cap can increase if you regularly supply large batches.</p><p>To be reimbursed, message one of the admins in the 3D printing Signal chat, or email <a href="mailto:rainbowbloc@proton.me">rainbowbloc@proton.me</a>.</p><p>Please include:</p><ul><li>A receipt</li><li>A picture of the whistles</li><li>A rough count of whistles</li><li>Your Venmo (if you do not have Venmo, message us and we can work out another option)</li></ul>`,
+  },
+  {
+    question: "How can I join the Signal chat for 3D printers?",
+    answer: `<p>DM <a href="https://instagram.com/rainbowbloc" target="_blank" rel="noopener">@rainbowbloc</a> on IG or email <a href="mailto:rainbowbloc@proton.me">rainbowbloc@proton.me</a>.</p>`,
+  },
+];
 ---
 
 <BaseLayout title="Rainbow Bloc">
@@ -34,6 +85,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <a href="/safety">Learn more</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="feature-section">
+    <div class="container">
+      <h2>Printing Whistles with Rainbow Bloc</h2>
+      <p class="lead">
+        Thank you for joining the fight against ICE! We host public weekly events where we build whistle kits, fold zines, and discuss best practices on individual and community safety.
+      </p>
+      <p class="zine-download">
+        <a href="/downloads/zines/whistle-codes-8pp-eng-span.pdf" class="btn btn-outline" target="_blank">
+          Download Whistle Codes Zine (PDF)
+        </a>
+      </p>
+      <Faq items={whistleFaq} />
     </div>
   </section>
 
@@ -76,5 +142,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     gap: 1rem;
     justify-content: center;
     margin-top: 2rem;
+  }
+
+  .feature-section .lead {
+    font-size: 1.1rem;
+    max-width: 50rem;
+    margin-bottom: 2rem;
+  }
+
+  .zine-download {
+    margin-bottom: 2rem;
   }
 </style>

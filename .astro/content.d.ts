@@ -170,6 +170,14 @@ declare module 'astro:content' {
   rendered?: RenderedContent;
   filePath?: string;
 }>;
+"whistles": Record<string, {
+  id: string;
+  body?: string;
+  collection: "whistles";
+  data: InferEntrySchema<"whistles">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
 "zines": Record<string, {
   id: string;
   body?: string;
