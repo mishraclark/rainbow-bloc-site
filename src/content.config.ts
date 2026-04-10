@@ -27,15 +27,4 @@ const events = defineCollection({
   }),
 });
 
-const whistles = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/whistles" }),
-  schema: z.object({
-    name: z.string(),
-    file: z.string(),
-    recommended: z.boolean().default(false),
-    notes: z.string().optional(),
-    order: z.number().default(0),
-  }),
-});
-
-export const collections = { zines, events, whistles };
+export const collections = { zines, events };

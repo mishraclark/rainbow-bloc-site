@@ -174,7 +174,7 @@ declare module 'astro:content' {
   id: string;
   body?: string;
   collection: "whistles";
-  data: InferEntrySchema<"whistles">;
+  data: any;
   rendered?: RenderedContent;
   filePath?: string;
 }>;

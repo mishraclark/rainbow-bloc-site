@@ -27,20 +27,6 @@ collections:
       - { label: File, name: file, widget: file }
       - { label: Description, name: description, widget: markdown, required: false }
 
-  - name: whistles
-    label: Whistles
-    folder: /src/content/whistles
-    create: true
-    slug: "{{slug}}"
-    media_folder: "/public/downloads/whistles"
-    public_folder: "/downloads/whistles"
-    fields:
-      - { label: Name, name: name, widget: string }
-      - { label: STL File, name: file, widget: file, hint: "Upload the .stl file" }
-      - { label: Recommended, name: recommended, widget: boolean, default: false, hint: "Show as a recommended print" }
-      - { label: Notes, name: notes, widget: markdown, required: false }
-      - { label: Order, name: order, widget: number, required: false, default: 0 }
-
   - name: events
     label: Events
     folder: /src/content/events

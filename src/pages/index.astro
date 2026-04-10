@@ -1,26 +1,13 @@
 ---
-import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Faq from "../components/Faq.astro";
 
-const whistles = (await getCollection("whistles")).sort(
-  (a, b) => a.data.order - b.data.order,
-);
-const recommendedWhistles = whistles.filter((w) => w.data.recommended);
-
-const recommendedList = recommendedWhistles.length
-  ? `<ul>${recommendedWhistles
-      .map(
-        (w) =>
-          `<li><a href="${w.data.file}" download>${w.data.name}</a></li>`,
-      )
-      .join("")}</ul>`
-  : `<p><em>No recommended files uploaded yet. Upload STL files via the admin panel.</em></p>`;
+const whistleFilesUrl = "https://drive.proton.me/urls/KT1VB9Q0Z0#MoCjM8uCwoTr";
 
 const whistleFaq = [
   {
     question: "Which whistle file should I print?",
-    answer: `<p>We suggest printing one of the files below, as they have the best combination of speed, filament usage, and loudness.</p>${recommendedList}<p>All types of whistles are accepted, though.</p>`,
+    answer: `<p>We suggest printing one of the files in <a href="${whistleFilesUrl}" target="_blank" rel="noopener">this folder</a>, as they have the best combination of speed, filament usage, and loudness.</p><p>All types of whistles are accepted, though.</p>`,
   },
   {
     question: "Do I need to print the PIRC Hotline # on the whistles?",
