@@ -4,6 +4,12 @@ import Faq from "../components/Faq.astro";
 
 const whistleFilesUrl = "https://drive.proton.me/urls/KT1VB9Q0Z0#MoCjM8uCwoTr";
 
+const showCalendar = false;
+const calendarId = "REPLACE_WITH_CALENDAR_ID@group.calendar.google.com";
+const calendarTimezone = "America/Los_Angeles";
+const calendarEmbedUrl = `https://calendar.google.com/calendar/embed?src=${encodeURIComponent(calendarId)}&ctz=${encodeURIComponent(calendarTimezone)}&mode=AGENDA&showTitle=0&showPrint=0&showCalendars=0&showTz=0`;
+const calendarPublicUrl = `https://calendar.google.com/calendar/u/0/r?cid=${encodeURIComponent(calendarId)}`;
+
 const whistleFaq = [
   {
     question: "Which whistle file should I print?",
@@ -75,6 +81,27 @@ const whistleFaq = [
     </div>
   </section>
 
+  {showCalendar && (
+  <section>
+    <div class="container">
+      <h2>Upcoming Events</h2>
+      <p>See what's coming up and add events to your own calendar with one click.</p>
+      <div class="calendar-embed">
+        <iframe
+          src={calendarEmbedUrl}
+          title="Rainbow Bloc upcoming events"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p class="calendar-subscribe">
+        <a href={calendarPublicUrl} class="btn btn-outline" target="_blank" rel="noopener">
+          Add this calendar to Google Calendar
+        </a>
+      </p>
+    </div>
+  </section>
+  )}
+
   <section class="feature-section">
     <div class="container">
       <h2>Printing Whistles with Rainbow Bloc</h2>
@@ -84,6 +111,9 @@ const whistleFaq = [
       <p class="zine-download">
         <a href="/downloads/zines/whistle-codes-8pp-eng-span.pdf" class="btn btn-outline" target="_blank">
           Download Whistle Codes Zine (PDF)
+        </a>
+        <a href={whistleFilesUrl} class="btn btn-outline" target="_blank" rel="noopener">
+          Download Whistle 3D Print Files
         </a>
       </p>
       <Faq items={whistleFaq} />
@@ -139,5 +169,34 @@ const whistleFaq = [
 
   .zine-download {
     margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .calendar-embed {
+    margin-top: 1.5rem;
+    border: 1px solid var(--color-border, #ddd);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    max-width: 50rem;
+  }
+
+  .calendar-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  .calendar-subscribe {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 48rem) {
+    .calendar-embed {
+      aspect-ratio: 16 / 9;
+    }
   }
 </style>
