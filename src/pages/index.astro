@@ -52,12 +52,13 @@ const whistleFaq = [
       <img src="/rb-logo.svg" alt="Rainbow Bloc" class="hero-logo" />
       <p class="hero-tagline">Solidarity in action.</p>
       <div class="hero-actions">
-        <a href="/get-involved" class="btn btn-primary">Get Involved</a>
+        <a href="mailto:rainbowbloc@proton.me?subject=Volunteering%20with%20Rainbow%20Bloc" class="btn btn-primary">Get Involved</a>
         <a href="/causes" class="btn btn-outline">Our Causes</a>
       </div>
     </div>
   </section>
 
+  {false && (
   <section>
     <div class="container">
       <h2>What We Do</h2>
@@ -80,6 +81,7 @@ const whistleFaq = [
       </div>
     </div>
   </section>
+  )}
 
   {showCalendar && (
   <section>
@@ -102,7 +104,7 @@ const whistleFaq = [
   </section>
   )}
 
-  <section class="feature-section">
+  <section class="feature-section section-tinted">
     <div class="container">
       <h2>Printing Whistles with Rainbow Bloc</h2>
       <p class="lead">
@@ -116,31 +118,46 @@ const whistleFaq = [
           Download Whistle 3D Print Files
         </a>
       </p>
-      <Faq items={whistleFaq} />
+      {/* <Faq items={whistleFaq} /> */}
     </div>
   </section>
 
   <section>
     <div class="container">
       <h2>Get Involved</h2>
-      <p>Whether you can volunteer time, share resources, or spread the word — there's a place for you.</p>
-      <a href="/get-involved" class="btn btn-primary">See how you can help</a>
+      <p>Reach out to enquire about volunteer opportunities.</p>
+      <a href="mailto:rainbowbloc@proton.me?subject=Volunteering%20with%20Rainbow%20Bloc" class="btn btn-primary" style="margin-top: 1.5rem;">See how you can help</a>
     </div>
   </section>
 
-  <section>
+  <section class="section-tinted">
     <div class="container">
       <h2>Support Our Work</h2>
-      <p>Your donations keep our programs running and our community safe.</p>
-      <a href="/about/donate" class="btn btn-outline">Donate</a>
+      <p>Your donations help us print zines, host events, and support our community.</p>
+      <div class="venmo-qr">
+        <img src="/qr-codes/rb-venmo-qr-code.svg" alt="Venmo QR code" />
+        <p>Scan the QR code or find us on Venmo.</p>
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  section {
+    text-align: center;
+    padding-block: 3rem;
+  }
+
+  section h2 {
+    margin-block: 0 1.5rem;
+  }
+
+  .section-tinted {
+    background-color: #e6f3f8;
+  }
+
   .hero {
     padding-block: 5rem 3rem;
-    text-align: center;    
   }
 
   .hero-logo {
@@ -165,6 +182,7 @@ const whistleFaq = [
     font-size: 1.1rem;
     max-width: 50rem;
     margin-bottom: 2rem;
+    margin-inline: auto;
   }
 
   .zine-download {
@@ -172,6 +190,7 @@ const whistleFaq = [
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
+    justify-content: center;
   }
 
   .calendar-embed {
@@ -181,6 +200,7 @@ const whistleFaq = [
     overflow: hidden;
     aspect-ratio: 4 / 3;
     max-width: 50rem;
+    margin-inline: auto;
   }
 
   .calendar-embed iframe {
@@ -192,6 +212,19 @@ const whistleFaq = [
 
   .calendar-subscribe {
     margin-top: 1rem;
+  }
+
+  .venmo-qr {
+    margin-top: 1.5rem;
+    text-align: center;
+    max-width: 24rem;
+    margin-inline: auto;
+  }
+
+  .venmo-qr img {
+    width: 12rem;
+    height: auto;
+    margin-bottom: 1rem;
   }
 
   @media (min-width: 48rem) {
