@@ -28,24 +28,29 @@ function formatTime(d: Date): string {
   <ul class="event-list">
     {upcomingEvents.map((event) => (
       <li class="event-card">
-        <div class="event-date">{formatDate(event.data.start)}</div>
-        <div class="event-details">
-          <strong class="event-name">{event.data.name}</strong>
-          <span class="event-time">
-            {formatTime(event.data.start)}
-            {event.data.end && ` – ${formatTime(event.data.end)}`}
-          </span>
-          {event.data.location && (
-            <span class="event-location">{event.data.location}</span>
-          )}
-          {event.data.description && (
-            <p class="event-description">{event.data.description}</p>
-          )}
-          {event.data.link && (
-            <a href={event.data.link} target="_blank" rel="noopener" class="event-link">
-              More info
-            </a>
-          )}
+        {event.data.image && (
+          <img src={event.data.image} alt={event.data.name} class="event-image" />
+        )}
+        <div class="event-info">
+          <div class="event-date">{formatDate(event.data.start)}</div>
+          <div class="event-details">
+            <strong class="event-name">{event.data.name}</strong>
+            <span class="event-time">
+              {formatTime(event.data.start)}
+              {event.data.end && ` – ${formatTime(event.data.end)}`}
+            </span>
+            {event.data.location && (
+              <span class="event-location">{event.data.location}</span>
+            )}
+            {event.data.description && (
+              <p class="event-description">{event.data.description}</p>
+            )}
+            {event.data.link && (
+              <a href={event.data.link} target="_blank" rel="noopener" class="event-link">
+                More info
+              </a>
+            )}
+          </div>
         </div>
       </li>
     ))}
@@ -68,11 +73,24 @@ function formatTime(d: Date): string {
 
   .event-card {
     display: flex;
-    gap: 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
     padding: 1.25rem 1.5rem;
     border-radius: var(--radius, 0.5rem);
     border: 1px solid var(--color-border, #e5e7eb);
     background: var(--color-bg, #fff);
+  }
+
+  .event-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius, 0.5rem);
+  }
+
+  .event-info {
+    display: flex;
+    gap: 1.5rem;
   }
 
   .event-date {
