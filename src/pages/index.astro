@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Faq from "../components/Faq.astro";
+import UpcomingEvents from "../components/UpcomingEvents.astro";
 
 const whistleFilesUrl = "https://drive.proton.me/urls/KT1VB9Q0Z0#MoCjM8uCwoTr";
 
@@ -55,6 +56,13 @@ const whistleFaq = [
         <a href="mailto:rainbowbloc@proton.me?subject=Volunteering%20with%20Rainbow%20Bloc" class="btn btn-primary">Get Involved</a>
         <a href="/causes" class="btn btn-outline">Our Causes</a>
       </div>
+    </div>
+  </section>
+
+  <section class="section-tinted">
+    <div class="container">
+      <h2>Upcoming Events</h2>
+      <UpcomingEvents />
     </div>
   </section>
 
@@ -124,13 +132,21 @@ const whistleFaq = [
 
   <section>
     <div class="container">
+      <h2>Request Whistles</h2>
+      <p>You are welcome to pick up whistles from any of our events, or email us to coordinate a large batch. Please include an estimate of whistles needed and the groups you work with, if any.</p>
+      <a href="mailto:rainbowbloc@proton.me?subject=Requesting%20Bulk%20Whistles" class="btn btn-primary" style="margin-top: 1.5rem;">Request Whistles</a>
+    </div>
+  </section>
+
+  <section class="section-tinted">
+    <div class="container">
       <h2>Get Involved</h2>
       <p>Reach out to enquire about volunteer opportunities.</p>
       <a href="mailto:rainbowbloc@proton.me?subject=Volunteering%20with%20Rainbow%20Bloc" class="btn btn-primary" style="margin-top: 1.5rem;">See how you can help</a>
     </div>
   </section>
 
-  <section class="section-tinted">
+  <section>
     <div class="container">
       <h2>Support Our Work</h2>
       <p>Your donations help us print zines, host events, and support our community.</p>
