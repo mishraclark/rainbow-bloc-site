@@ -5,11 +5,10 @@ const now = new Date();
 const allEvents = await getCollection("events");
 
 const upcomingEvents = allEvents
-  .filter((e) => new Date(e.data.start) >= now)
-  .sort((a, b) => new Date(a.data.start).getTime() - new Date(b.data.start).getTime());
+  .filter((e) => e.data.start >= now)
+  .sort((a, b) => a.data.start.getTime() - b.data.start.getTime());
 
-function formatDate(dateStr: string): string {
-  const d = new Date(dateStr);
+function formatDate(d: Date): string {
   return d.toLocaleDateString("en-US", {
     weekday: "short",
     month: "short",
@@ -17,8 +16,7 @@ function formatDate(dateStr: string): string {
   });
 }
 
-function formatTime(dateStr: string): string {
-  const d = new Date(dateStr);
+function formatTime(d: Date): string {
   return d.toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
