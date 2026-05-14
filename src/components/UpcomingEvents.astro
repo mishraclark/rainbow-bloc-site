@@ -5,7 +5,7 @@ const now = new Date();
 const allEvents = await getCollection("events");
 
 const upcomingEvents = allEvents
-  .filter((e) => e.data.start >= now)
+  .filter((e) => (e.data.end ?? e.data.start) >= now)
   .sort((a, b) => a.data.start.getTime() - b.data.start.getTime());
 
 function formatDate(d: Date): string {
