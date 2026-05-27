@@ -8,11 +8,14 @@ const upcomingEvents = allEvents
   .filter((e) => (e.data.end ?? e.data.start) >= now)
   .sort((a, b) => a.data.start.getTime() - b.data.start.getTime());
 
+const TZ = "America/Los_Angeles";
+
 function formatDate(d: Date): string {
   return d.toLocaleDateString("en-US", {
     weekday: "short",
     month: "short",
     day: "numeric",
+    timeZone: TZ,
   });
 }
 
@@ -20,6 +23,7 @@ function formatTime(d: Date): string {
   return d.toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
+    timeZone: TZ,
   });
 }
 ---
