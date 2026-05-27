@@ -34,8 +34,15 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: Name, name: name, widget: string }
-      - { label: Start, name: start, widget: datetime, format: "YYYY-MM-DDTHH:mm:ss.SSSZ" }
-      - { label: End, name: end, widget: datetime, required: false, format: "YYYY-MM-DDTHH:mm:ss.SSSZ" }
+      - { label: Start, name: start, widget: datetime, format: "YYYY-MM-DDTHH:mm:ss.SSSZ", hint: "For recurring events, this is the first occurrence." }
+      - { label: End, name: end, widget: datetime, required: false, format: "YYYY-MM-DDTHH:mm:ss.SSSZ", hint: "End of a single occurrence (e.g. 8pm)." }
+      - label: Repeats
+        name: recurrence
+        widget: select
+        required: false
+        options: ["weekly", "biweekly", "monthly"]
+        hint: "Leave blank for a one-off event."
+      - { label: Repeats Until, name: recurrenceUntil, widget: datetime, required: false, format: "YYYY-MM-DDTHH:mm:ss.SSSZ", hint: "Last date the event can recur. Leave blank for ongoing." }
       - { label: Location, name: location, widget: string, required: false }
       - { label: Address, name: address, widget: string, required: false }
       - { label: Link, name: link, widget: string, required: false }

@@ -1,12 +1,14 @@
 ---
 import { getCollection } from "astro:content";
+import { expandEvent } from "../lib/events";
 
 const now = new Date();
 const allEvents = await getCollection("events");
 
 const upcomingEvents = allEvents
-  .filter((e) => (e.data.end ?? e.data.start) >= now)
-  .sort((a, b) => a.data.start.getTime() - b.data.start.getTime());
+  .flatMap((e) => expandEvent(e, now))
+  .filter((o) => (o.end ?? o.start) >= now)
+  .sort((a, b) => a.start.getTime() - b.start.getTime());
 
 const TZ = "America/Los_Angeles";
 
@@ -30,27 +32,27 @@ function formatTime(d: Date): string {
 
 {upcomingEvents.length > 0 ? (
   <ul class="event-list">
-    {upcomingEvents.map((event) => (
+    {upcomingEvents.map(({ entry, start, end }) => (
       <li class="event-card">
-        {event.data.image && (
-          <img src={event.data.image} alt={event.data.name} class="event-image" />
+        {entry.data.image && (
+          <img src={entry.data.image} alt={entry.data.name} class="event-image" />
         )}
         <div class="event-info">
-          <div class="event-date">{formatDate(event.data.start)}</div>
+          <div class="event-date">{formatDate(start)}</div>
           <div class="event-details">
-            <strong class="event-name">{event.data.name}</strong>
+            <strong class="event-name">{entry.data.name}</strong>
             <span class="event-time">
-              {formatTime(event.data.start)}
-              {event.data.end && ` – ${formatTime(event.data.end)}`}
+              {formatTime(start)}
+              {end && ` – ${formatTime(end)}`}
             </span>
-            {event.data.location && (
-              <span class="event-location">{event.data.location}</span>
+            {entry.data.location && (
+              <span class="event-location">{entry.data.location}</span>
             )}
-            {event.data.description && (
-              <p class="event-description">{event.data.description}</p>
+            {entry.data.description && (
+              <p class="event-description">{entry.data.description}</p>
             )}
-            {event.data.link && (
-              <a href={event.data.link} target="_blank" rel="noopener" class="event-link">
+            {entry.data.link && (
+              <a href={entry.data.link} target="_blank" rel="noopener" class="event-link">
                 More info
               </a>
             )}

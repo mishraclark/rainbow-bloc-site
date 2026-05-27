@@ -19,6 +19,8 @@ const events = defineCollection({
     name: z.string(),
     start: z.coerce.date(),
     end: z.coerce.date().optional(),
+    recurrence: z.enum(["weekly", "biweekly", "monthly"]).optional(),
+    recurrenceUntil: z.coerce.date().optional(),
     location: z.string().optional(),
     address: z.string().optional(),
     link: z.string().optional(),

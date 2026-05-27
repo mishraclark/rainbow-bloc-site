@@ -39,6 +39,30 @@
             }
           ]
         },
+        "recurrence": {
+          "type": "string",
+          "enum": [
+            "weekly",
+            "biweekly",
+            "monthly"
+          ]
+        },
+        "recurrenceUntil": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
         "location": {
           "type": "string"
         },
