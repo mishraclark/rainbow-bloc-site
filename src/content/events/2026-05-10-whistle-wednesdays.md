@@ -1,8 +1,9 @@
 ---
 name: Whistle Wednesdays
 startDate: 2026-05-06
-startTime: "18:00"
-endTime: "20:00"
+startTime: 18:00
+endTime: 20:00
+endDate: ''
 recurrence: weekly
 recurrenceUntil: 2026-05-27
 location: Lucky Lab - Hawthorne
