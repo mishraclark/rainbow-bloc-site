@@ -7,7 +7,7 @@
         "name": {
           "type": "string"
         },
-        "start": {
+        "startDate": {
           "anyOf": [
             {
               "type": "string",
@@ -23,7 +23,10 @@
             }
           ]
         },
-        "end": {
+        "startTime": {
+          "type": "string"
+        },
+        "endDate": {
           "anyOf": [
             {
               "type": "string",
@@ -38,6 +41,9 @@
               "format": "unix-time"
             }
           ]
+        },
+        "endTime": {
+          "$ref": "#/definitions/events/properties/startTime"
         },
         "recurrence": {
           "type": "string",
@@ -48,43 +54,27 @@
           ]
         },
         "recurrenceUntil": {
-          "anyOf": [
-            {
-              "type": "string",
-              "format": "date-time"
-            },
-            {
-              "type": "string",
-              "format": "date"
-            },
-            {
-              "type": "integer",
-              "format": "unix-time"
-            }
-          ]
+          "$ref": "#/definitions/events/properties/endDate"
         },
         "location": {
-          "type": "string"
+          "$ref": "#/definitions/events/properties/startTime"
         },
         "address": {
-          "type": "string"
+          "$ref": "#/definitions/events/properties/startTime"
         },
         "link": {
-          "type": "string"
+          "$ref": "#/definitions/events/properties/startTime"
         },
         "image": {
-          "type": "string"
+          "$ref": "#/definitions/events/properties/startTime"
         },
         "description": {
-          "type": "string"
-        },
-        "$schema": {
-          "type": "string"
+          "$ref": "#/definitions/events/properties/startTime"
         }
       },
       "required": [
         "name",
-        "start"
+        "startDate"
       ],
       "additionalProperties": false
     }
