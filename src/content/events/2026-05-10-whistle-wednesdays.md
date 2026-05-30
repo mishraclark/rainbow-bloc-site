@@ -1,9 +1,10 @@
 ---
 name: Whistle Wednesdays
-start: 2026-05-06T18:00:00.000-07:00
-end: 2026-05-27T20:00:00.000-07:00
+startDate: 2026-05-06
+startTime: "18:00"
+endTime: "20:00"
 recurrence: weekly
-recurrenceUntil: ''
+recurrenceUntil: 2026-05-27
 location: Lucky Lab - Hawthorne
 address: 915 SE Hawthorne Blvd Portland, OR
 link: ''

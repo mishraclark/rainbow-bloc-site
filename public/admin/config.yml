@@ -34,15 +34,17 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: Name, name: name, widget: string }
-      - { label: Start, name: start, widget: datetime, format: "YYYY-MM-DDTHH:mm:ss.SSSZ", hint: "For recurring events, this is the first occurrence." }
-      - { label: End, name: end, widget: datetime, required: false, format: "YYYY-MM-DDTHH:mm:ss.SSSZ", hint: "End of a single occurrence (e.g. 8pm)." }
+      - { label: Start Date, name: startDate, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: false, hint: "For recurring events, this is the first occurrence." }
+      - { label: Start Time, name: startTime, widget: string, required: false, hint: "e.g. 6:00 PM or 18:00" }
+      - { label: End Time, name: endTime, widget: string, required: false, hint: "e.g. 8:00 PM or 20:00" }
+      - { label: End Date, name: endDate, widget: datetime, required: false, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: false, hint: "Only for multi-day events. Leave blank if it ends the same day." }
       - label: Repeats
         name: recurrence
         widget: select
         required: false
         options: ["weekly", "biweekly", "monthly"]
         hint: "Leave blank for a one-off event."
-      - { label: Repeats Until, name: recurrenceUntil, widget: datetime, required: false, format: "YYYY-MM-DDTHH:mm:ss.SSSZ", hint: "Last date the event can recur. Leave blank for ongoing." }
+      - { label: Repeats Until, name: recurrenceUntil, widget: datetime, required: false, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: false, hint: "Last date the event can recur. Leave blank for ongoing." }
       - { label: Location, name: location, widget: string, required: false }
       - { label: Address, name: address, widget: string, required: false }
       - { label: Link, name: link, widget: string, required: false }

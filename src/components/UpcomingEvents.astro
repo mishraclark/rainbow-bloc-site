@@ -5,10 +5,16 @@ import { expandEvent } from "../lib/events";
 const now = new Date();
 const allEvents = await getCollection("events");
 
+const seenIds = new Set<string>();
 const upcomingEvents = allEvents
   .flatMap((e) => expandEvent(e, now))
   .filter((o) => (o.end ?? o.start) >= now)
-  .sort((a, b) => a.start.getTime() - b.start.getTime());
+  .sort((a, b) => a.start.getTime() - b.start.getTime())
+  .filter((o) => {
+    if (seenIds.has(o.entry.id)) return false;
+    seenIds.add(o.entry.id);
+    return true;
+  });
 
 const TZ = "America/Los_Angeles";
 
